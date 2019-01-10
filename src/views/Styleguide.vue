@@ -18,6 +18,7 @@
       <CustomInput placeholder="input focus" />
       <label class="b">LABEL</label>
       <CustomInput placeholder="input focus" />
+      <SelectBox :options="[{id: 1, label: 'option 1'}, {id: 2, label: 'option 2'}]" />
     </div>
   </div>
 </template>
@@ -25,11 +26,13 @@
 <script>
 import CustomButton from '@/components/CustomButton';
 import CustomInput from '@/components/CustomInput';
+import SelectBox from '@/components/SelectBox';
 export default {
   name: 'styleguide',
   components: {
   	CustomButton,
-    CustomInput
+    CustomInput,
+    SelectBox
   }
 }
 </script>
