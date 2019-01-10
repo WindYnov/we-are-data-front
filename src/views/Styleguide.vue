@@ -11,15 +11,25 @@
     	<CustomButton classNames="btn--lg btn--light-gray" :rounded="false" text="BOUTON LARGE" />
     	<CustomButton classNames="btn--lg btn--light-gray" :rounded="true" text="BOUTON LARGE" />
     </div>
+
+    <h1>Forms</h1>
+    <div>
+      <label class="b">LABEL</label>
+      <CustomInput placeholder="input focus" />
+      <label class="b">LABEL</label>
+      <CustomInput placeholder="input focus" />
+    </div>
   </div>
 </template>
 
 <script>
 import CustomButton from '@/components/CustomButton';
+import CustomInput from '@/components/CustomInput';
 export default {
   name: 'styleguide',
   components: {
-  	CustomButton
+  	CustomButton,
+    CustomInput
   }
 }
 </script>
