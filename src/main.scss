@@ -1,0 +1,14 @@
+/* base */
+@import 'base/_base.scss';
+@import 'base/_colors.scss';
+@import 'base/reset.scss';
+
+/* components */
+@import 'components/_buttons.scss';
+
+/* layout */
+@import 'layout/hero-bg.scss';
+
+/* pages */
+@import 'pages/_home.scss';
+@import 'pages/_dashboard.scss';
