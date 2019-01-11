@@ -16,6 +16,10 @@
     <div>
       <Checkbox classNames="checkbox--red" :checked="false"/>
       <Checkbox classNames="checkbox--red" :checked="true"/>
+
+      <RadioButton classNames="radio--red" :checked="false"/>
+      <RadioButton classNames="radio--red" :checked="true"/>
+
       <CustomInput placeholder="input focus" />
       <label class="b">LABEL</label>
       <CustomInput placeholder="input focus" />
@@ -29,13 +33,15 @@ import CustomButton from '@/components/CustomButton';
 import CustomInput from '@/components/CustomInput';
 import SelectBox from '@/components/SelectBox';
 import Checkbox from '@/components/Checkbox';
+import RadioButton from '@/components/RadioButton';
 export default {
   name: 'styleguide',
   components: {
   	CustomButton,
     CustomInput,
     SelectBox,
-    Checkbox
+    Checkbox,
+    RadioButton
   }
 }
 </script>
