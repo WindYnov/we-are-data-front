@@ -1,6 +1,6 @@
 <template>
 	<label :class="`checkbox--container ${classNames}`">
-    <input type="checkbox">
+    <input type="checkbox" :checked="checked">
     <span @click="checked=!checked" class="checkbox--checkmark">
       <span v-if="checked">✔</span>
     </span>
