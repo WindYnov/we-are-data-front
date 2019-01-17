@@ -1,7 +1,7 @@
 <template>
 	<label :class="`checkbox--container ${classNames}`">
     <input type="checkbox" :checked="checked">
-    <span @click="checked=!checked" class="checkbox--checkmark">
+    <span @click="toggle(!checked)" class="checkbox--checkmark">
       <span v-if="checked">✔</span>
     </span>
   </label>
@@ -13,6 +13,12 @@ export default {
   props: {
     checked: Boolean,
     classNames: String
+  },
+  methods: {
+    toggle(checked) {
+      this.checked = checked;
+      this.$emit('onToggle', checked);
+    }
   }
 };
 </script>
