@@ -43,4 +43,17 @@
 		color: $black;
 		background: transparent;
 	}
+	&--blue {
+		background-color: $blue;
+		border-color: $blue;
+		color: white;
+	}
+	&--white-trans {
+		background-color: transparent;
+		border-color: white;
+		color: white;
+	}
+	&--shadow {
+		box-shadow: 2px 3px 7px 0 rgba(75,75,75,0.5);
+	}
 }

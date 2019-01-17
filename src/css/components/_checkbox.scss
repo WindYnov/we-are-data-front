@@ -8,9 +8,10 @@
 	  display: inline-block;
 	  position: relative;
 	  padding-left: 35px;
-	  margin-bottom: 12px;
+	  margin-bottom: 20px;
 	  cursor: pointer;
 	  font-size: 22px;
+	  text-align: center;
 	  -webkit-user-select: none;
 	  -moz-user-select: none;
 	  -ms-user-select: none;
@@ -40,6 +41,10 @@
       border-radius: 3px;
 	}
 	&--icon {
-		box-sizing: border-box;	height: 10px;	width: 10px;	border: 1px solid #E74C3C;	background-color: #E74C3C;
+		box-sizing: border-box;
+		height: 10px;
+		width: 10px;
+		border: 1px solid #E74C3C;
+		background-color: #E74C3C;
 	}
 }

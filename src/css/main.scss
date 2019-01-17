@@ -9,9 +9,13 @@
 @import 'components/_selectbox.scss';
 @import 'components/_checkbox.scss';
 @import 'components/_radioButton.scss';
+@import 'components/_modal.scss';
+@import 'components/_card.scss';
 
 /* layout */
-@import 'layout/hero-bg.scss';
+@import 'layout/_hero-bg.scss';
+@import 'layout/_header.scss';
+@import 'layout/_footer.scss';
 
 /* pages */
 @import 'pages/_home.scss';

@@ -25,6 +25,20 @@
       <CustomInput placeholder="input focus" />
       <SelectBox :options="[{id: 1, label: 'option 1'}, {id: 2, label: 'option 2'}]" />
     </div>
+
+    <h1>Card</h1>
+    <div style="width: 50%; margin: 0 auto;">
+      <Card title="Modal title">
+        <template slot="body">
+          <p>Paragraphs - poppins regular 15px
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </template>
+        <template slot="footer">
+          <CustomButton classNames="btn--lg btn--black-trans" :rounded="false" text="BOUTON LARGE" />
+          <CustomButton classNames="btn--lg btn--green" :rounded="false" text="BOUTON LARGE" />
+        </template>
+      </Card>
+    </div>
   </div>
 </template>
 
@@ -34,6 +48,7 @@ import CustomInput from '@/components/CustomInput';
 import SelectBox from '@/components/SelectBox';
 import Checkbox from '@/components/Checkbox';
 import RadioButton from '@/components/RadioButton';
+import Card from '@/components/Card';
 export default {
   name: 'styleguide',
   components: {
@@ -41,7 +56,8 @@ export default {
     CustomInput,
     SelectBox,
     Checkbox,
-    RadioButton
+    RadioButton,
+    Card
   }
 }
 </script>
