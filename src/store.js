@@ -22,6 +22,7 @@ export default new Vuex.Store({
 						this.alreadyRegistered = response.alreadyRegistered;
 					});
 		},
+
 		signIn(mail, password) {
 			mail &&
 				password &&
@@ -37,6 +38,15 @@ export default new Vuex.Store({
 					mail,
 					password
 				});
+		},
+
+		saveSalesInfos(salesInfos) {
+			axios.post("http://localhost:3000/company/salesinfos", salesInfos);
+		},
+		processFile(event) {
+			let file = event.target.files[0];
+			this.file = file;
+			axios.post("http://localhost:3000/company/sales/file", file);
 		}
 	}
 });

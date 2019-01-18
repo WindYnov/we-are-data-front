@@ -23,7 +23,7 @@
 
 <script>
 // Import modules
-import axios from 'axios';
+import { mapActions } from 'vuex';
 // Import components
 import CustomButton from '@/components/CustomButton.vue';
 import Sidebar from '@/components/Sidebar.vue';
@@ -50,14 +50,7 @@ export default {
     }
   };
   }, methods: {
-    saveSalesInfos(salesInfos) {
-      axios.post('http://localhost:3000/company/salesinfos', salesInfos);
-    },
-    processFile(event) {
-      let file = event.target.files[0];
-      this.file = file;
-      axios.post('http://localhost:3000/company/sales/file', file);
-    }
+    ...mapActions(['saveSalesInfos', 'processFile'])
   }
 };
 </script>
