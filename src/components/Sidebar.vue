@@ -1,8 +1,11 @@
 <template>
   <div class="sidebar">
-    <router-link v-for="setting in companySettings" class="setting" :to="setting.route">
+    <div v-for="setting in companySettings"
+         :class="'setting '.concat(setting.active ? 'active' : '')"
+         @click="refreshSettings(companySettings, setting)"
+    >
       <a>{{setting.title}}</a>
-    </router-link>
+    </div>
   </div>
 </template>
 
@@ -13,12 +16,18 @@ export default {
   data: () => {
   return {
     companySettings: [
-      { title: 'Personal settings', route: '/' },
-      { title: 'Sales', route: '/dashboard/sales' },
-      { title: 'Clients', route: '/dashboard/clients' }
+      { title: 'Personal settings', route: '/', active: false },
+      { title: 'Sales', route: '/dashboard/sales', active: false },
+      { title: 'Clients', route: '/dashboard/clients', active: false }
     ]
   };
   }, methods: {
+    refreshSettings(companySettings, setting) {
+      companySettings.map((setting) => setting.active = false);
+      setting.active = true;
+      this.$router.replace(setting.route);
+      debugger;
+    }
   }
 }
 </script>

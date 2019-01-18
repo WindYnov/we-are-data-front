@@ -1,8 +1,21 @@
 <template>
   <div id="app">
-    <router-view/>
+    <Sidebar/>
+    <div class="">
+      <router-view/>
+    </div>
   </div>
 </template>
+
+<script>
+import Sidebar from '@/components/Sidebar.vue';
+export default {
+  name: 'home',
+  components: {
+    Sidebar
+  }
+};
+</script>
 
 <style lang="scss">
 @import './css/main.scss';
@@ -23,4 +36,22 @@
     }
   }
 }
+
+#app {
+  overflow: hidden;
+  position: relative;
+  > .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 10%;
+  }
+  > div:last-child {
+    position: fixed;
+    left: 10%;
+    width: 90%;
+  }
+}
+
 </style>

@@ -6,6 +6,9 @@
 		color: $black;
 		display: block;
 	}
+	.active {
+		background-color: lightgray;
+	}
 	.setting:hover {
 		background-color: lightgray;
 	}
