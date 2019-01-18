@@ -51,6 +51,8 @@ export default {
     position: fixed;
     left: 10%;
     width: 90%;
+    height: 100%;
+    overflow: auto;
   }
 }
 

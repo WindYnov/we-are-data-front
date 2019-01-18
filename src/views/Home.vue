@@ -154,7 +154,7 @@
 
 <script>
 // Import modules
-import axios from 'axios';
+import { mapActions } from "vuex";
 // Import components
 import CustomButton from '@/components/CustomButton.vue';
 import Card from '@/components/Card.vue';
@@ -181,10 +181,8 @@ export default {
 	};
   },
   methods: {
-	saveCompany(company) {
-		debugger;
-		axios.post('http://localhost:3000/company/info', company);
-	},
+	...mapActions(['saveCompany']),
+
 	toggleKeepInformed(checked) {
 		this.company.keepInformed = checked;
 	}
