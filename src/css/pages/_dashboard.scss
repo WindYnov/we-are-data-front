@@ -1,0 +1,38 @@
+.dashboard {
+	overflow: hidden;
+	position: relative;
+	#import-sales-file {
+		float: right;
+		margin: 20px;
+	}
+	> .sidebar {
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 10%;
+	}
+	> div:last-child {
+		position: fixed;
+		left: 10%;
+		width: 90%;
+	}
+	.add-sales-infos {
+		float: left;
+		text-align: left;
+		margin: 100px 40px;
+		display: flex;
+		flex-wrap: wrap;
+		align-content: flex-end;
+		h3,
+		div > * {
+			margin: 10px;
+		}
+		input {
+			width: 25%;
+		}
+		.btn {
+			width: 30%;
+		}
+	}
+}
