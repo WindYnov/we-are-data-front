@@ -1,0 +1,24 @@
+.sales {
+  #import-sales-file {
+    float: right;
+    margin: 20px;
+  }
+  .add-sales-infos {
+    float: left;
+    text-align: left;
+    margin: 100px 40px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-end;
+    h3,
+    div > * {
+      margin: 10px;
+    }
+    input {
+      width: 25%;
+    }
+    .btn {
+      width: 30%;
+    }
+  }
+}

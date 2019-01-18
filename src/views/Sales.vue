@@ -1,7 +1,7 @@
 <template>
   <div class="sales">
     <div id="import-sales-file">
-      <input type="file" name="file">
+      <input type="file" name="file" @change="processFile($event)">
     </div>
     <div class="add-sales-infos">
       <h3>Infos de ventes</h3>
@@ -36,6 +36,7 @@ export default {
   },
   data: () => {
   return {
+    file: null,
     salesInfos: {
       numFacture: null,
       dateFacture: null,
@@ -50,9 +51,13 @@ export default {
   };
   }, methods: {
     saveSalesInfos(salesInfos) {
-      debugger;
-      // axios.post('http://localhost:3000/company/salesinfos', salesInfos);
+      axios.post('http://localhost:3000/company/salesinfos', salesInfos);
+    },
+    processFile(event) {
+      let file = event.target.files[0];
+      this.file = file;
+      axios.post('http://localhost:3000/company/sales/file', file);
     }
   }
-}
+};
 </script>
