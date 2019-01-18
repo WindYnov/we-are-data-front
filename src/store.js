@@ -6,9 +6,36 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
 	state: {
-		company: {}
+		company: {},
+		clients: [
+			{
+				nom: "SAKHIRI Mostafa",
+				secteur: "Informatique",
+				siret: "11566",
+				mail: "mostafa@gmail.com",
+				numero: "065889515"
+			},
+			{
+				nom: "OTMANI Dina",
+				secteur: "Informatique",
+				siret: "8657",
+				mail: "dina@gmail.com",
+				numero: "0786565515"
+			},
+			{
+				nom: "PRINCE Jéremy",
+				secteur: "Informatique",
+				siret: "99999",
+				mail: "luffy@gmail.com",
+				numero: "0786565515"
+			}
+		]
 	},
-	mutations: {},
+	mutations: {
+		addClient(state, client) {
+			state.clients.push(client);
+		}
+	},
 	actions: {
 		saveCompany(state, company) {
 			axios.post("http://localhost:3000/company/info", company);
@@ -47,6 +74,11 @@ export default new Vuex.Store({
 			let file = event.target.files[0];
 			this.file = file;
 			axios.post("http://localhost:3000/company/sales/file", file);
+		},
+
+		saveClient(state, client) {
+			debugger;
+			state.commit("addClient", client);
 		}
 	}
 });

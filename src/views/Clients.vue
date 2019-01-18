@@ -1,41 +1,41 @@
 <template>
   <div class="clients">
-    <div class=right>
-       <CustomButton @click.native="saveSalesInfos(salesInfos)" classNames="btn--lg btn--green tu" text="Ajouter un client" />
-    </div>
     <div >
       <div>
-       <input placeholder="Nom" type="name" >
+       <input v-model="client.nom" placeholder="Nom" type="text" >
       </div>
       <div>
-       <input placeholder="Prénom" type="name" >
+         <input v-model="client.secteur" placeholder="Secteur" type="text" >
       </div>
       <div>
-         <input placeholder="Secteur" type="name" >
+       <input v-model="client.adress" placeholder="Adress" type="text" >
       </div>
       <div>
-       <input placeholder="Adress" type="adress" >
+       <input v-model="client.siret" placeholder="Siret" type="text" >
       </div>
       <div>
-       <input placeholder="Siret" type="name" >
+       <input v-model="client.mail" placeholder="Mail" type="mail" >
       </div>
       <div>
-       <input placeholder="Mail" type="mail" >
+       <input v-model="client.numero" placeholder="Numéro" type="number" >
       </div>
       <div>
-       <input placeholder="Numéro" type="number" >
+        <CustomButton @click.native="saveClient(client)" classNames="btn--lg btn--green tu" text="Ajouter le client" />
       </div>
     </div>
     <p class= left>Liste des clients</p>
     <input v-model="search" placeholder='search' type="search">
     <Table
-      :data="gridData"
+      :data="clients"
       :columns="gridColumns"
       :filter-key="search"/>
   </div>
 </template>
 
 <script>
+// Import modules
+import { mapState, mapActions } from 'vuex';
+// Import components
 import Table from '@/components/Table.vue';
 import CustomButton from '@/components/CustomButton.vue';
 
@@ -45,18 +45,17 @@ export default {
     Table,
     CustomButton
   },
+  computed: {
+    ...mapState(['clients'])
+  },
   data: () => {
   return {
     search: '',
-    gridColumns: ['nom', 'prenom', 'secteur', 'siret', 'mail','numero'],
-    gridData: [
-      { nom: 'SAKHIRI ', prenom: 'Mostafa',secteur:'Informatique',siret:'11566',mail:'mostafa@gmail.com',numero: '065889515'  },
-      {  nom: 'OTMANI ',prenom: 'Dina',secteur:'Informatique',siret:'11566',mail:'mostafa@gmail.com', numero: '065898985'   },
-      {  nom: 'PACKO ',prenom: 'Jeremy',secteur:'Informatique',siret:'11566',mail:'mostafa@gmail.com', numero: '0603880515'   },
-      {  nom: 'PRINCE',prenom: 'Luffy',secteur:'Informatique',siret:'11566',mail:'mostafa@gmail.com', numero: '0786565515'   }
-    ]
+    gridColumns: ['nom', 'secteur', 'siret', 'mail','numero'],
+    client: {}
   };
   }, methods: {
+    ...mapActions(['saveClient'])
   }
 };
 </script>
