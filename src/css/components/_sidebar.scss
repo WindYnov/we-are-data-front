@@ -1,0 +1,12 @@
+.sidebar {
+	background-color: $lightgray;
+	text-align: left;
+	.setting {
+		padding: 10px 0px 10px 10px;
+		color: $black;
+		display: block;
+	}
+	.setting:hover {
+		background-color: lightgray;
+	}
+}
