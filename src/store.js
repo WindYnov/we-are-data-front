@@ -11,8 +11,32 @@ export default new Vuex.Store({
 	mutations: {},
 	actions: {
 		saveCompany(state, company) {
-			debugger;
 			axios.post("http://localhost:3000/company/info", company);
+		},
+		verify(mail) {
+			mail &&
+				axios
+					.get("http://localhost:3000/company/auth/check", { mail })
+					.then(response => {
+						this.verified = true;
+						this.alreadyRegistered = response.alreadyRegistered;
+					});
+		},
+		signIn(mail, password) {
+			mail &&
+				password &&
+				axios.post("http://localhost:3000/company/auth/signin", {
+					mail,
+					password
+				});
+		},
+		signUp(mail, password) {
+			mail &&
+				password &&
+				axios.post("http://localhost:3000/company/signup", {
+					mail,
+					password
+				});
 		}
 	}
 });
