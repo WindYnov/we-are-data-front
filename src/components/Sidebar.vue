@@ -1,6 +1,8 @@
 <template>
   <div class="sidebar">
-    <a  v-for="setting in companySettings" class="setting" :href="setting.link">{{setting.title}}</a>
+    <router-link v-for="setting in companySettings" class="setting" :to="setting.route">
+      <a>{{setting.title}}</a>
+    </router-link>
   </div>
 </template>
 
@@ -11,9 +13,9 @@ export default {
   data: () => {
   return {
     companySettings: [
-      { title: 'Personal settings', link: '' },
-      { title: 'Sales', link: '/sales' },
-      { title: 'Clients', link: '/clients' }
+      { title: 'Personal settings', route: '/' },
+      { title: 'Sales', route: '/dashboard/sales' },
+      { title: 'Clients', route: '/dashboard/clients' }
     ]
   };
   }, methods: {
