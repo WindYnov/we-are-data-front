@@ -12,7 +12,7 @@
         <input v-model="salesInfos.totalHT" placeholder="total ht" type="number"/>
         <input v-model="salesInfos.tauxTVA" placeholder="taux de TVA" type="number"/>
         <input v-model="salesInfos.qteVendue" placeholder="quantités vendues" type="number"/>
-        <input v-model="salesInfos.client" placeholder="client" type="name"/>
+        <SelectBox :options="clientOptions" placeholder="client" />
         <input v-model="salesInfos.productsType" placeholder="catégorie de produits vendus" type="name"/>
         <input v-model="salesInfos.activityArea" placeholder="secteur d’activité" type="name"/>
         <CustomButton @click.native="saveSalesInfos(salesInfos)" classNames="btn--lg btn--green tu" text="Sauvegarder" />
@@ -23,20 +23,22 @@
 
 <script>
 // Import modules
-import { mapActions } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 // Import components
 import CustomButton from '@/components/CustomButton.vue';
 import Sidebar from '@/components/Sidebar.vue';
-
+import SelectBox from '@/components/SelectBox.vue';
 export default {
   name: 'sales',
   components: {
     CustomButton,
-    Sidebar
+    Sidebar,
+    SelectBox
   },
   data: () => {
   return {
     file: null,
+    clientOptions: [],
     salesInfos: {
       numFacture: null,
       dateFacture: null,
@@ -49,8 +51,16 @@ export default {
       activityArea: null
     }
   };
-  }, methods: {
+  },
+  computed: {
+    ...mapState(['clients'])
+  },
+  methods: {
     ...mapActions(['saveSalesInfos', 'processFile'])
-  }
+  },
+  mounted() {
+
+    this.clients.forEach((client) => this.clientOptions.push({ label: client.nom, key: client._id}));
+      }
 };
 </script>
