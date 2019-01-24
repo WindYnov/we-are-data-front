@@ -1,0 +1,31 @@
+.header {
+    height: 635px;
+    position: relative;
+    color: white;
+    overflow: hidden;
+    background-image:linear-gradient(rgba(96, 96, 96, 0.7),rgba(96, 96, 96, 0.7)),url('./assets/img/bg-header.png');
+    .hero-wrapper{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+    }
+    .btn{
+        margin-top: 60px;
+    }
+
+    > .btn {
+    	position: absolute;
+    	right: 30px;
+    	bottom: 20px;
+    	width: 150px;
+    }
+    .icons {
+    	position: absolute;
+    	left: 30px;
+    	bottom: 20px;
+    	img {
+    		padding: 5px;
+    	}
+    }
+}
