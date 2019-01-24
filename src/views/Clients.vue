@@ -1,29 +1,18 @@
 <template>
   <div class="clients">
-    <div >
-      <div>
+    <h3>Ajouter un client</h3>
+    <div class="add-client-form">
        <input v-model="client.nom" placeholder="Nom" type="text" >
-      </div>
-      <div>
-         <input v-model="client.secteur" placeholder="Secteur" type="text" >
-      </div>
-      <div>
+       <input v-model="client.secteur" placeholder="Secteur" type="text" >
        <input v-model="client.adress" placeholder="Adress" type="text" >
-      </div>
-      <div>
        <input v-model="client.siret" placeholder="Siret" type="text" >
-      </div>
-      <div>
        <input v-model="client.mail" placeholder="Mail" type="mail" >
-      </div>
-      <div>
        <input v-model="client.numero" placeholder="Numéro" type="number" >
-      </div>
-      <div>
-        <CustomButton @click.native="saveClient(client)" classNames="btn--lg btn--green tu" text="Ajouter le client" />
-      </div>
+       <div>
+          <CustomButton @click.native="saveClient(client)" classNames="btn--lg btn--green tu" text="Ajouter le client" />
+       </div>
     </div>
-    <p class= left>Liste des clients</p>
+    <h3>Liste des clients</h3>
     <input v-model="search" placeholder='search' type="search">
     <Table
       :data="clients"
@@ -61,7 +50,4 @@ export default {
 </script>
 
 <style>
-.left{
-  text-align: left;
-}
 </style>

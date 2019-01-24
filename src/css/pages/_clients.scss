@@ -1,0 +1,14 @@
+.clients {
+	padding: 40px;
+	text-align: left;
+	.add-client-form {
+		> input,
+		.btn {
+			margin: 10px 10px 10px 0;
+			width: 25%;
+		}
+	}
+	.table {
+		margin-top: 20px;
+	}
+}
