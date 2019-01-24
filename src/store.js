@@ -7,6 +7,19 @@ Vue.use(Vuex);
 export default new Vuex.Store({
 	state: {
 		company: {},
+		sales: [
+          {
+			'numFacture': 'test',
+			'dateFacture': 'test',
+			'productName': 'test',
+			'totalHT': 'test',
+			'tauxTVA': 'test',
+			'qteVendue': 'test',
+			'client': 'test',
+			'productsType': 'test',
+			'activityArea': 'test'
+		}
+		],
 		clients: [
 			{
 				nom: "SAKHIRI Mostafa",
@@ -34,6 +47,9 @@ export default new Vuex.Store({
 	mutations: {
 		addClient(state, client) {
 			state.clients.push(client);
+		},
+		addSalesInfos(state, sales) {
+			state.sales.push(sales);
 		}
 	},
 	actions: {
@@ -67,8 +83,8 @@ export default new Vuex.Store({
 				});
 		},
 
-		saveSalesInfos(salesInfos) {
-			axios.post("http://localhost:3000/company/salesinfos", salesInfos);
+		saveSalesInfos(state, salesInfos) {
+			state.commit("addSalesInfos", salesInfos);
 		},
 		processFile(event) {
 			let file = event.target.files[0];
@@ -77,7 +93,6 @@ export default new Vuex.Store({
 		},
 
 		saveClient(state, client) {
-			debugger;
 			state.commit("addClient", client);
 		}
 	}

@@ -17,6 +17,12 @@
         <input v-model="salesInfos.activityArea" placeholder="secteur d’activité" type="name"/>
         <CustomButton @click.native="saveSalesInfos(salesInfos)" classNames="btn--lg btn--green tu" text="Sauvegarder" />
       </div>
+      <div class="sales-infos">
+        <Table
+          :data="sales"
+          :columns="gridColumns"
+          :filter-key="search"/>
+      </div>
     </div>
   </div>
 </template>
@@ -28,17 +34,21 @@ import { mapState, mapActions } from 'vuex';
 import CustomButton from '@/components/CustomButton.vue';
 import Sidebar from '@/components/Sidebar.vue';
 import SelectBox from '@/components/SelectBox.vue';
+import Table from '@/components/Table.vue';
 export default {
   name: 'sales',
   components: {
     CustomButton,
     Sidebar,
-    SelectBox
+    SelectBox,
+    Table
   },
   data: () => {
   return {
     file: null,
     clientOptions: [],
+    search: '',
+    gridColumns: [ 'dateFacture', 'productName', 'totalHT', 'tauxTVA', 'qteVendue', 'client', 'productsType', 'activityArea' ],
     salesInfos: {
       numFacture: null,
       dateFacture: null,
@@ -53,14 +63,13 @@ export default {
   };
   },
   computed: {
-    ...mapState(['clients'])
+    ...mapState(['clients', 'sales'])
   },
   methods: {
     ...mapActions(['saveSalesInfos', 'processFile'])
   },
   mounted() {
-
     this.clients.forEach((client) => this.clientOptions.push({ label: client.nom, key: client._id}));
-      }
+  }
 };
 </script>
