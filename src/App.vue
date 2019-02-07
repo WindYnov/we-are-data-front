@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Sidebar/>
-    <div class="">
+    <Sidebar v-if="this.$router.history.current.path !== '/'" />
+    <div :style="this.$router.history.current.path === '/' ? '' : 'left: 10%; width: 90%;'">
       <router-view/>
     </div>
   </div>
@@ -49,8 +49,6 @@ export default {
   }
   > div:last-child {
     position: fixed;
-    left: 10%;
-    width: 90%;
     height: 100%;
     overflow: auto;
   }

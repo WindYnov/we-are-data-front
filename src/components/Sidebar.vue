@@ -1,5 +1,8 @@
 <template>
   <div class="sidebar">
+    <div class="logo">
+      <img width="100px" height="100px" src="./../assets/img/icon1.svg" />
+    </div>
     <div v-for="setting in companySettings"
          :class="'setting '.concat(setting.active ? 'active' : '')"
          @click="refreshSettings(companySettings, setting)"

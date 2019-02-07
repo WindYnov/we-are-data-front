@@ -4,6 +4,8 @@
     color: white;
     overflow: hidden;
     background-image:linear-gradient(rgba(96, 96, 96, 0.7),rgba(96, 96, 96, 0.7)),url('./assets/img/bg-header.png');
+    background-size: cover;
+    background-repeat: no-repeat;
     .hero-wrapper{
         position: absolute;
         left: 50%;

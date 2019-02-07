@@ -1,10 +1,19 @@
 .sidebar {
 	background-color: $lightgray;
 	text-align: left;
+	.logo {
+		padding: 20px;
+		height: 100px;
+		margin-bottom: 20px;
+		img {
+			border-radius: 50%;
+		}
+	}
 	.setting {
 		padding: 10px 0px 10px 10px;
 		color: $black;
 		display: block;
+		cursor: pointer;
 	}
 	.active {
 		background-color: lightgray;
