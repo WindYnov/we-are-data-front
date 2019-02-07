@@ -8,9 +8,7 @@
          <input v-model="client.siret" placeholder="Siret" type="text" >
          <input v-model="client.mail" placeholder="Mail" type="mail" >
          <input v-model="client.telephone" placeholder="Numéro" type="number" >
-         <div>
-            <CustomButton @click.native="saveClient(client) && resetForm()" classNames="btn--lg btn--green tu" text="Ajouter le client" />
-         </div>
+         <CustomButton @click.native="saveClient(client) && resetForm()" classNames="btn--lg btn--green tu" text="Ajouter le client" />
       </div>
   </div>
 </template>

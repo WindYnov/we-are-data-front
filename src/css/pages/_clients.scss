@@ -30,7 +30,8 @@
 	    }
 
 		> div {
-			overflow: hidden;
+			display: flex;
+			flex-wrap: wrap;
 			input,
 			.btn {
 				width: 100%;
