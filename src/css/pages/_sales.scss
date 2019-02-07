@@ -1,7 +1,10 @@
 .sales {
-  #import-sales-file {
+  #import-add-sales-file {
     float: right;
     margin: 20px;
+    input {
+      margin-right: 10px;
+    }
   }
   .add-sales-infos {
     float: left;
@@ -24,5 +27,41 @@
 
   .sales-infos {
     margin-top: 50px;
+    .table {
+      margin-left: 0;
+    }
+  }
+
+  .add-sales-form {
+    position: fixed;
+    right: 0;
+    top: 0;
+    background: white;
+    width: 30%;
+    height: 100%;
+    padding: 50px 50px 10px;
+    box-shadow: 5px 13px 26px 6px rgba(172,166,166,0.5);
+    overflow: auto;
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 50px;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    h3 {
+      margin: 40px 0;
+    }
+
+    > div {
+      display: flex;
+      flex-wrap: wrap;
+      input, select, button {
+        width: 100%;
+        margin-top: 10px;
+      }
+    }
   }
 }

@@ -1,19 +1,18 @@
 <template>
-  <div class="sales">
-    <AddSalesForm v-if="showSalesForm" v-on:closeForm="showSalesForm = false;" />
-    <div id="import-add-sales-file">
-      <input type="file" name="file" @change="processFile($event)">
-      <CustomButton @click.native="showSalesForm = true;" classNames="btn--lg btn--green tu" text="Ajouter des ventes" />
-    </div>
-    <div class="add-sales-infos">
-      <div class="sales-infos">
-        <input v-model="search" placeholder="Rechercher des ventes" />
-        <Table
-          :data="sales"
-          :columns="gridColumns"
-          :filter-key="search"/>
+  <div class="add-sales-form">
+      <div class="close" @click="$emit('closeForm')">x</div>
+      <h3>Infos de ventes</h3>
+      <div class="">
+        <input v-model="salesInfos.dateFacture" placeholder="date de la facture" type="date"/>
+        <input v-model="salesInfos.productName" placeholder="nom du produit vendu" type="name"/>
+        <input v-model="salesInfos.totalHT" placeholder="total ht" type="number"/>
+        <input v-model="salesInfos.tauxTVA" placeholder="taux de TVA" type="number"/>
+        <input v-model="salesInfos.qteVendue" placeholder="quantités vendues" type="number"/>
+        <SelectBox :defaultOption="{ key: null, label: 'Select a client' }" v-on:onSelectOption="onSelectOption" :options="clientOptions" />
+        <input v-model="salesInfos.productsType" placeholder="catégorie de produits vendus" type="name"/>
+        <input v-model="salesInfos.activityArea" placeholder="secteur d’activité" type="name"/>
+        <CustomButton @click.native="saveSalesInfos(salesInfos) && resetForm()" classNames="btn--lg btn--green tu" text="Sauvegarder" />
       </div>
-    </div>
   </div>
 </template>
 
@@ -24,24 +23,17 @@ import { mapState, mapActions } from 'vuex';
 import CustomButton from '@/components/CustomButton.vue';
 import Sidebar from '@/components/Sidebar.vue';
 import SelectBox from '@/components/SelectBox.vue';
-import Table from '@/components/Table.vue';
-import AddSalesForm from '@/components/AddSalesForm.vue';
 export default {
   name: 'sales',
   components: {
     CustomButton,
     Sidebar,
-    SelectBox,
-    Table,
-    AddSalesForm
+    SelectBox
   },
   data: () => {
   return {
     file: null,
     clientOptions: [],
-    search: '',
-    gridColumns: [ 'dateFacture', 'productName', 'totalHT', 'tauxTVA', 'qteVendue', 'client', 'productsType', 'activityArea' ],
-    showSalesForm: false  ,
     salesInfos: {
       numFacture: null,
       dateFacture: null,
@@ -56,10 +48,10 @@ export default {
   };
   },
   computed: {
-    ...mapState(['clients', 'sales'])
+    ...mapState(['clients'])
   },
   methods: {
-    ...mapActions(['saveSalesInfos', 'processFile']),
+    ...mapActions(['saveSalesInfos']),
     onSelectOption(option) {
       let client = this.clients.find((client) => client._id === option.key);
       if (client) {
