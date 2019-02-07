@@ -26,7 +26,11 @@ td {
 
 th,
 td {
-  min-width: 120px;
+  min-width: 50px;
+  max-width: 120px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
   padding: 10px 20px;
 }
 
