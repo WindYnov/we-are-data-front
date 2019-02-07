@@ -1,14 +1,48 @@
 .clients {
-	padding: 40px;
+	padding: 20px;
 	text-align: left;
+
+	#add-client-btn {
+		float: right;
+	}
+
 	.add-client-form {
-		> input,
-		.btn {
-			margin: 10px 10px 10px 0;
-			width: 25%;
+		position: fixed;
+	    right: 0;
+	    top: 0;
+	    background: white;
+	    width: 30%;
+	    height: 100%;
+	    padding: 50px 50px 10px;
+	    box-shadow: 5px 13px 26px 6px rgba(172,166,166,0.5);
+	    overflow: auto;
+
+	    .close {
+	      position: absolute;
+	      top: 20px;
+	      right: 50px;
+	      font-size: 30px;
+	      cursor: pointer;
+	    }
+
+	    h3 {
+	      margin: 40px 0;
+	    }
+
+		> div {
+			overflow: hidden;
+			input,
+			.btn {
+				width: 100%;
+				margin: 10px 0;
+			}
 		}
 	}
-	.table {
-		margin-top: 20px;
+
+	.clients-infos {
+		margin: 200px 0 0 40px;
+		.table {
+			margin-top: 20px;
+		}
 	}
 }
