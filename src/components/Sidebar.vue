@@ -19,9 +19,10 @@ export default {
   data: () => {
   return {
     companySettings: [
-      { title: 'Personal settings', route: '/dashboard/personalsettings', active: false },
+      { title: 'Personal settings', route: '/dashboard/personalsettings', active: true },
       { title: 'Sales', route: '/dashboard/sales', active: false },
-      { title: 'Clients', route: '/dashboard/clients', active: false }
+      { title: 'Clients', route: '/dashboard/clients', active: false },
+      { title: 'Stats', route: '/dashboard/stats', active: false }
     ]
   };
   }, methods: {
@@ -29,7 +30,6 @@ export default {
       companySettings.map((setting) => setting.active = false);
       setting.active = true;
       this.$router.replace(setting.route);
-      debugger;
     }
   }
 }
