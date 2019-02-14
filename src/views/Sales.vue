@@ -2,7 +2,7 @@
   <div class="sales">
     <AddSalesForm v-if="showSalesForm" v-on:closeForm="showSalesForm = false;" />
     <div id="import-add-sales-file">
-      <input type="file" name="file" @change="processFile($event)">
+      <InputFile text="Charger un fichier de ventes" v-on:uploadFile="processFile($event)" />
       <CustomButton @click.native="showSalesForm = true;" classNames="btn--lg btn--green tu" text="Ajouter des ventes" />
     </div>
     <div class="add-sales-infos">
@@ -26,6 +26,8 @@ import Sidebar from '@/components/Sidebar.vue';
 import SelectBox from '@/components/SelectBox.vue';
 import Table from '@/components/Table.vue';
 import AddSalesForm from '@/components/AddSalesForm.vue';
+import InputFile from '@/components/InputFile.vue';
+
 export default {
   name: 'sales',
   components: {
@@ -33,7 +35,8 @@ export default {
     Sidebar,
     SelectBox,
     Table,
-    AddSalesForm
+    AddSalesForm,
+    InputFile
   },
   data: () => {
   return {

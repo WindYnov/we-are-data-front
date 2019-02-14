@@ -45,21 +45,23 @@
 
       <CustomButton v-if="darkTheme" @click.native="switchTheme()" classNames="btn--lg btn--green tu" text="Switch to light theme" />
       <CustomButton v-else @click.native="switchTheme()" classNames="btn--lg btn--green tu" text="Switch to dark theme" />
-      <input type="file" name="file" @change="uploadAvatarImage($event)">
+      <InputFile text="Changer mon avatar" v-on:uploadFile="uploadAvatarImage($event)" />
     </div>
   </div>
 </template>
 
-<script>  
+<script>
 // Import modules
 import { mapState, mapActions } from 'vuex';
 // Import components
 import CustomButton from '@/components/CustomButton.vue';
+import InputFile from '@/components/InputFile.vue';
 
 export default {
   name: 'personal-settings',
   components: {
-    CustomButton
+    CustomButton,
+    InputFile
   },
 
   data: () => {
