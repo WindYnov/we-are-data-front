@@ -47,3 +47,14 @@
 		}
 	}
 }
+
+
+.dark-theme {
+  .clients {
+  	color: white;
+  	.add-client-form {
+	  background-color: #2c3e52;
+	  box-shadow: 5px 13px 26px 6px #020203; 
+	}
+  }
+}

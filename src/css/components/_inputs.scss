@@ -17,3 +17,9 @@ input:focus {
 		padding: 15px 60px 15px 14px;
 	}
 }
+
+.dark-theme {
+  input[type="file"] {
+	background-color: #020203;
+  }
+}

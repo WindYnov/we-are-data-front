@@ -22,3 +22,24 @@
 		background-color: lightgray;
 	}
 }
+
+
+.dark-theme {
+	.sidebar {
+		background-color: #101720;
+		.setting {
+			a {
+				color: white;
+			}
+		}
+
+		.setting:hover {
+			background-color: #020203;
+		}
+
+		.active {
+			background-color: #020203;
+			color: white;
+		}
+	}
+}

@@ -1,18 +1,26 @@
 <template>
-  <div id="app">
+  <div id="app" :class="`${darkTheme ? 'dark-theme' : ''}`">
     <Sidebar v-if="this.$router.history.current.path !== '/'" />
-    <div :style="this.$router.history.current.path === '/' ? '' : 'left: 10%; width: 90%;'">
+    <div :style="`${this.$router.history.current.path === '/' ? '' : 'left: 10%; width: 90%;'}
+      ${this.darkTheme ? 'background-color: #2c3e52;' : ''}`">
       <router-view/>
     </div>
   </div>
 </template>
 
 <script>
+// Import modules
+import { mapState } from 'vuex';
+
+// Import components
 import Sidebar from '@/components/Sidebar.vue';
 export default {
   name: 'home',
   components: {
     Sidebar
+  },
+  computed: {
+    ...mapState(['darkTheme'])
   }
 };
 </script>
