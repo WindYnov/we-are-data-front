@@ -22,7 +22,8 @@ export default {
       { title: 'Personal settings', route: '/dashboard/personalsettings', active: true },
       { title: 'Sales', route: '/dashboard/sales', active: false },
       { title: 'Clients', route: '/dashboard/clients', active: false },
-      { title: 'Stats', route: '/dashboard/stats', active: false }
+      { title: 'Stats', route: '/dashboard/stats', active: false },
+      { title: 'Simulateur', route: '/dashboard/simulateur', active: false }
     ]
   };
   }, methods: {

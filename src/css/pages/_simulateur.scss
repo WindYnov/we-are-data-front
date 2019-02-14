@@ -1,0 +1,19 @@
+.simulateur {
+	padding-top: 100px;
+	> div > * {
+		margin-top: 10px;
+	}
+
+	a {
+		color: $blue;
+	}
+}
+
+.dark-theme {
+	.simulateur {
+		color: white;
+		a {
+			color: lightblue;
+		}
+	}
+}

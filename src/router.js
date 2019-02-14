@@ -8,6 +8,7 @@ import Sales from "./views/Sales.vue";
 import Clients from "./views/Clients.vue";
 import PersonalSettings from './views/PersonalSettings.vue';
 import Stats from './views/Stats.vue';
+import Simulateur from './views/Simulateur.vue';
 
 Vue.use(Router);
 
@@ -82,6 +83,14 @@ export default new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: Stats
+    },
+    {
+      path: "/dashboard/simulateur",
+      name: "simulateur",
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: Simulateur
     }
   ]
 });
