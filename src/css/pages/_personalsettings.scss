@@ -1,7 +1,15 @@
 .personal-settings {
+	position: relative;
 	text-align: left;
-	padding: 100px;
+	padding: 20px 60px;
 	font-size: 16px;
+
+	.edit-personal-settings {
+		position: absolute;
+		z-index: 2;
+		top: 20px;
+		right: 20px;
+	}
 
 	.container {
 		position: relative;
@@ -23,7 +31,7 @@
 
 		.user-infos {
 			width: 30%;
-			padding: 20px 0;
+			margin: 20px 0;
 
 			div {
 				padding: 10px 0;
@@ -35,10 +43,17 @@
 			}
 		}
 
-		.edit-user-infos > * {
-			display: block;
-			margin: 10px 0;
-		}
+		.edit-user-infos {
+			margin: 20px 0;
+			input {
+				width: 300px;
+			}
+
+			> * {
+				display: block;
+				margin: 10px 0;
+			}
+		} 
 	}
 }
 

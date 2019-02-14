@@ -1,5 +1,9 @@
 <template>
   <div class="personal-settings">
+    <div class="edit-personal-settings" @click="editMode = !editMode">
+      <CustomButton v-if="editMode" classNames="btn--lg btn--green tu" text="Save" />
+      <CustomButton v-else classNames="btn--lg btn--green tu" text="Editer" />
+    </div>
     <div class="container">
       <h3>Personal settings</h3>
 
@@ -10,7 +14,6 @@
         <input type="text" v-model="user.siret" class="input" placeholder="siret" />
         <input type="text" v-model="user.email" class="input" placeholder="email" />
         <input type="text" v-model="user.telephone" class="input" placeholder="telephone" />
-        <CustomButton classNames="btn--lg btn--green tu" text="Save changes" />
       </div>
 
       <div class="user-infos" v-else>
