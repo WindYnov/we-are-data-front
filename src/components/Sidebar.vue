@@ -19,7 +19,7 @@ export default {
   data: () => {
   return {
     companySettings: [
-      { title: 'Personal settings', route: '/', active: false },
+      { title: 'Personal settings', route: '/dashboard/personalsettings', active: false },
       { title: 'Sales', route: '/dashboard/sales', active: false },
       { title: 'Clients', route: '/dashboard/clients', active: false }
     ]

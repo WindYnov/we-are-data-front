@@ -7,49 +7,46 @@ Vue.use(Vuex);
 export default new Vuex.Store({
 	state: {
 		company: {},
-		sales: [
-          {
-			'numFacture': 'test',
-			'dateFacture': 'test',
-			'productName': 'test',
-			'totalHT': 'test',
-			'tauxTVA': 'test',
-			'qteVendue': 'test',
-			'client': 'test',
-			'productsType': 'test',
-			'activityArea': 'test'
-		}
-		],
+		sales: [],
 		clients: [
 			{
+				_id: 1,
 				nom: "SAKHIRI Mostafa",
 				secteur: "Informatique",
 				siret: "11566",
 				mail: "mostafa@gmail.com",
-				numero: "065889515"
+				telephone: "065889515"
 			},
 			{
+				_id: 2,
 				nom: "OTMANI Dina",
 				secteur: "Informatique",
 				siret: "8657",
 				mail: "dina@gmail.com",
-				numero: "0786565515"
+				telephone: "0786565515"
 			},
 			{
+				_id: 3,
 				nom: "PRINCE Jéremy",
 				secteur: "Informatique",
 				siret: "99999",
 				mail: "luffy@gmail.com",
-				numero: "0786565515"
+				telephone: "0786565515"
 			}
-		]
+		],
+		darkTheme: true
 	},
 	mutations: {
 		addClient(state, client) {
 			state.clients.push(client);
 		},
+
 		addSalesInfos(state, sales) {
 			state.sales.push(sales);
+		},
+
+		switchTheme(state) {
+			state.darkTheme = !state.darkTheme;
 		}
 	},
 	actions: {
@@ -94,6 +91,10 @@ export default new Vuex.Store({
 
 		saveClient(state, client) {
 			state.commit("addClient", client);
+		},
+
+		switchTheme(state) {
+			state.commit("switchTheme");
 		}
 	}
 });

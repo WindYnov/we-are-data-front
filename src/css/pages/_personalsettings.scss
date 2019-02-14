@@ -1,0 +1,54 @@
+.personal-settings {
+	text-align: left;
+	padding: 100px;
+	font-size: 16px;
+
+	.container {
+		position: relative;
+		> * {
+			margin: 10px 0;
+			display: block;
+		}
+
+		.advanced-params {
+			text-align: right;
+			position: absolute;
+			top: 0;
+			right: 0;
+
+			> * {
+				margin-bottom: 10px;
+			}
+		}
+
+		.user-infos {
+			width: 30%;
+			padding: 20px 0;
+
+			div {
+				padding: 10px 0;
+				border-bottom: 1px solid black;
+			}
+
+			span:last-child {
+				float: right;
+			}
+		}
+
+		.edit-user-infos > * {
+			display: block;
+			margin: 10px 0;
+		}
+	}
+}
+
+.dark-theme {
+	.personal-settings {
+		color: white;
+		.user-infos {
+			div {
+				border-bottom: 1px solid white;
+			}
+		}
+	}
+}

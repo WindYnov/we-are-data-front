@@ -6,6 +6,7 @@ import Login from "./views/Login.vue";
 import Dashboard from "./views/Dashboard.vue";
 import Sales from "./views/Sales.vue";
 import Clients from "./views/Clients.vue";
+import PersonalSettings from './views/PersonalSettings.vue';
 
 Vue.use(Router);
 
@@ -64,6 +65,14 @@ export default new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: Clients
+    },
+    {
+      path: "/dashboard/personalsettings",
+      name: "personalsettings",
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: PersonalSettings
     }
   ]
 });
