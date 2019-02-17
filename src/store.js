@@ -88,6 +88,11 @@ export default new Vuex.Store({
 		saveCompany(state, company) {
 			axios.post("http://localhost:3000/company/info", company);
 		},
+
+		updateCompany(state, company) {
+			axios.put("http://localhost:3000/company/info", company);
+		},
+
 		verify(mail) {
 			mail &&
 				axios

@@ -1,7 +1,7 @@
 <template>
   <div class="personal-settings">
     <div class="edit-personal-settings" @click="editMode = !editMode">
-      <CustomButton v-if="editMode" classNames="btn--lg btn--green tu" text="Save" />
+      <CustomButton v-if="editMode" classNames="btn--lg btn--green tu" text="Save" @click.native="updateCompany(company)"/>
       <CustomButton v-else classNames="btn--lg btn--green tu" text="Editer" />
     </div>
     <div class="container">
@@ -75,7 +75,7 @@ export default {
   },
 
   methods: {
-    ...mapActions(['switchTheme', 'uploadAvatarImage'])
+    ...mapActions(['switchTheme', 'uploadAvatarImage', 'updateCompany'])
   }
 };
 </script>
