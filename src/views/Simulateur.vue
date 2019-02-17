@@ -4,9 +4,9 @@
 <input v-model="charges" placeholder="Les charges de l’entreprise" type="number"/>
 <CustomButton @click.native="calculate(ca, charges)" classNames="btn--lg btn--green tu" text="Calculer" />
 <div>
-	<div v-if="marge">La marge: {{marge}}</div>
-	<div v-if="imposition">imposition: {{imposition}}</div>
-	<div v-if="marge && imposition">Résultat après impôts: {{result}}</div>
+	<div v-if="marge">La marge: {{marge}} €</div>
+	<div v-if="imposition">imposition: {{imposition}} €</div>
+	<div v-if="marge && imposition">Résultat après impôts: {{result}} €</div>
 	<div>
 		<span v-if="imposition < 10000">le résultat est trop bas pour faire de l’optimisation fiscale.</span>
 		<span v-else-if="imposition >= 10000 && imposition < 30000">
