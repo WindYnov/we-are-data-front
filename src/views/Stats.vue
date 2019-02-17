@@ -19,26 +19,12 @@ export default {
     CustomButton
   },
 
-  data: () => {
-    return {
-      data: [
-        {x: "Jan", value:10000, label:{enabled:true, format:"{%value} €"}},
-        {x: "Feb", value:12000, label:{enabled:true, fontColor:"green", fontWeight:900, format:"{%value} €"}},
-        {x: "March", value:13000, label:{enabled:true, fontColor:"red", fontWeight:900, format:"{%value} €"}},
-        {x: "Apr", value:10000, label:{enabled:true, format:"{%value} €"}},
-        {x: "May", value:9000, label:{enabled:true, format:"{%value} €"}},
-        {x: "Jun", value:10000, label:{enabled:true, format:"{%value} €"}},
-        {x: "Jul", value:12000, label:{enabled:true, fontColor:"green", fontWeight:900, format:"{%value} €"}},
-        {x: "Aug", value:13000, label:{enabled:true, fontColor:"red", fontWeight:900, format:"{%value} €"}},
-        {x: "Oct", value:10000, label:{enabled:true, format:"{%value} €"}},
-        {x: "Nov", value:9000, label:{enabled:true, format:"{%value} €"}},
-        {x: "Dec", value:9000, label:{enabled:true, format:"{%value} €"}}
-      ]
-    };
-  },
-
   computed: {
     ...mapState(['sales', 'darkTheme']),
+    defaultFontColor() {
+      return this.darkTheme ? 'white' : 'black';
+    },
+
     qteProdVendue() {
       return this.sales.reduce((acc, sale) => acc += sale.qteVendue, 0);
     },
@@ -48,21 +34,40 @@ export default {
     }
   },
 
+  data() {
+    return {
+      data: [
+        {x: "Jan", value:10000, label:{enabled:true, format:"{%value} €"}},
+        {x: "Feb", value:12000, label:{enabled:true, fontColor: this.defaultFontColor, fontWeight:900, format:"{%value} €"}},
+        {x: "March", value:13000, label:{enabled:true, fontColor:"red", fontWeight:900, format:"{%value} €"}},
+        {x: "Apr", value:10000, label:{enabled:true, format:"{%value} €"}},
+        {x: "May", value:9000, label:{enabled:true, format:"{%value} €"}},
+        {x: "Jun", value:10000, label:{enabled:true, format:"{%value} €"}},
+        {x: "Jul", value:12000, label:{enabled:true, fontColor: this.defaultFontColor, fontWeight:900, format:"{%value} €"}},
+        {x: "Aug", value:13000, label:{enabled:true, fontColor:"red", fontWeight:900, format:"{%value} €"}},
+        {x: "Oct", value:10000, label:{enabled:true, format:"{%value} €"}},
+        {x: "Nov", value:9000, label:{enabled:true, format:"{%value} €"}},
+        {x: "Dec", value:9000, label:{enabled:true, format:"{%value} €"}}
+      ]
+    };
+  },
+
   methods: {
-    ...mapActions(['switchTheme', 'uploadAvatarImage'])
+    ...mapActions(['uploadAvatarImage'])
   },
 
   mounted() {
     // create the first series (area)
     var chart = anychart.area(this.data);
+    chart.background().fill("transparent");
     chart.labels(true);
-    chart.labels().fontColor("green");
+    chart.labels().fontColor(this.defaultFontColor);
     chart.labels().fontWeight(900);
     chart.labels().format("${%value}");
 
     // configure tooltips on the chart
     chart.tooltip().title("Information");
-    chart.tooltip().format("Mois: {%categoryName} \nVentes: ${%value}");
+    chart.tooltip().format("Mois: {%categoryName} \nVentes: {%value} €");
 
     // set the container element 
     chart.container("container");
