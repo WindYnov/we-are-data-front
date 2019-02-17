@@ -12,7 +12,7 @@ import Simulateur from './views/Simulateur.vue';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: "/",
@@ -20,77 +20,55 @@ export default new Router({
       component: Home
     },
     {
-      path: "/about",
-      name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue")
-    },
-    {
       path: "/styleguide",
       name: "styleguide",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: Styleguide
     },
     {
       path: "/login",
       name: "login",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: Login
     },
     {
       path: "/dashboard",
       name: "dashboard",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: Dashboard
     },
     {
       path: "/dashboard/sales",
       name: "sales",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: Sales
     },
     {
       path: "/dashboard/clients",
       name: "clients",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: Clients
     },
     {
       path: "/dashboard/personalsettings",
       name: "personalsettings",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: PersonalSettings
     },
     {
       path: "/dashboard/stats",
       name: "stats",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: Stats
     },
     {
       path: "/dashboard/simulateur",
       name: "simulateur",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: Simulateur
     }
   ]
 });
+
+router.beforeEach((to, from, next) => {
+  if (to.fullPath !== '/' && !localStorage.connected) {
+    next('/');
+    return;
+  }
+
+  next();
+});
+
+export default router;
