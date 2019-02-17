@@ -62,7 +62,7 @@ export default {
     ...mapState(['clients', 'sales'])
   },
   methods: {
-    ...mapActions(['saveSalesInfos', 'processFile']),
+    ...mapActions(['activateSetting', 'saveSalesInfos', 'processFile']),
     onSelectOption(option) {
       let client = this.clients.find((client) => client._id === option.key);
       if (client) {
@@ -84,6 +84,8 @@ export default {
     }
   },
   mounted() {
+    this.activateSetting('/dashboard/sales');
+    //Initialize clientOptions array
     this.clients.forEach((client) => this.clientOptions.push({ label: client.nom, key: client._id}));
   }
 };

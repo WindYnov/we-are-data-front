@@ -10,6 +10,15 @@ export default new Vuex.Store({
 			nom: 'Sakhiri',
 			prenom: 'Mostafa'
 		},
+
+		settings: [
+          { title: 'Mes informations', route: '/dashboard/personalsettings', active: false },
+          { title: 'Mes ventes', route: '/dashboard/sales', active: false },
+          { title: 'Mes clients', route: '/dashboard/clients', active: false },
+          { title: 'Statistiques', route: '/dashboard/stats', active: false },
+          { title: 'Simulateur', route: '/dashboard/simulateur', active: false }
+        ],
+
 		sales: [
 		{
 			numFacture:123,
@@ -21,7 +30,8 @@ export default new Vuex.Store({
             client: 400,
             productsType: 400,
             activityArea: 400
-        }, {
+        },
+        {
 			numFacture:123,
             dateFacture: 230,
             productName: 400,
@@ -82,6 +92,14 @@ export default new Vuex.Store({
 
 		switchTheme(state) {
 			state.darkTheme = !state.darkTheme;
+		},
+
+		activateSetting(state, route) {
+			let activeRoute = state.settings.find((setting) => setting.route === route);
+			if (activeRoute) {
+				state.settings.map((setting) => setting.active = false);
+				activeRoute.active = true;
+			}
 		}
 	},
 	actions: {
@@ -109,6 +127,9 @@ export default new Vuex.Store({
 				axios.post("http://localhost:3000/company/auth/signin", {
 					mail,
 					password
+				})
+				.then(() => {
+					localStorage.connected = true
 				});
 		},
 		signUp(mail, password) {
@@ -117,6 +138,12 @@ export default new Vuex.Store({
 				axios.post("http://localhost:3000/company/signup", {
 					mail,
 					password
+				});
+		},
+		logout() {
+			axios.post("http://localhost:3000/company/logout")
+				.then(() => {
+					localStorage.connected = false
 				});
 		},
 
@@ -135,6 +162,10 @@ export default new Vuex.Store({
 
 		switchTheme(state) {
 			state.commit("switchTheme");
+		},
+
+		activateSetting(state, route) {
+			state.commit('activateSetting', route);
 		}
 	}
 });

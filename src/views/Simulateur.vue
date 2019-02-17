@@ -24,6 +24,7 @@
 
 <script>
 // Import modules
+import { mapActions } from 'vuex';
 // Import components
 import CustomButton from '@/components/CustomButton.vue';
 
@@ -42,13 +43,18 @@ export default {
 	};
   },
   methods: {
-  	calculate(ca, charges) {
-  		let marge = ca - charges;
-  		this.marge = marge;
-  		let imposition = marge <= 38120 ? (marge * 15) / 100 : (marge * 28) / 100;
-  		this.imposition = imposition;
-  		this.result = marge - imposition;
-  	}
+    ...mapActions(['activateSetting']),
+	calculate(ca, charges) {
+		let marge = ca - charges;
+		this.marge = marge;
+		let imposition = marge <= 38120 ? (marge * 15) / 100 : (marge * 28) / 100;
+		this.imposition = imposition;
+		this.result = marge - imposition;
+	}
+  },
+
+  mounted() {
+    this.activateSetting('/dashboard/simulateur');
   }
 }
 </script>

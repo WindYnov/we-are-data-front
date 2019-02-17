@@ -53,12 +53,14 @@ export default {
   },
 
   methods: {
-    ...mapActions(['uploadAvatarImage'])
+    ...mapActions(['activateSetting', 'uploadAvatarImage'])
   },
 
-  mounted() {
+mounted() {
+    this.activateSetting('/dashboard/stats');
+
     // create the first series (area)
-    var chart = anychart.area(this.data);
+    let chart = anychart.area(this.data);
     chart.background().fill("transparent");
     chart.labels(true);
     chart.labels().fontColor(this.defaultFontColor);

@@ -3,32 +3,34 @@
     <div class="logo">
       <img width="100px" height="100px" src="./../assets/img/icon1.svg" />
     </div>
-    <div v-for="setting in companySettings"
+
+    <div v-for="setting in settings"
          :class="'setting '.concat(setting.active ? 'active' : '')"
-         @click="refreshSettings(companySettings, setting)"
+         @click="refreshSettings(settings, setting)"
     >
       <a>{{setting.title}}</a>
+    </div>
+
+    <div @click="logout()" class="setting">
+      <a>Déconnexion</a>
     </div>
   </div>
 </template>
 
 <script>
+// Import modules
+import { mapState, mapActions } from 'vuex';
 // Import components
 export default {
   name: 'sidebar',
-  data: () => {
-  return {
-    companySettings: [
-      { title: 'Personal settings', route: '/dashboard/personalsettings', active: true },
-      { title: 'Sales', route: '/dashboard/sales', active: false },
-      { title: 'Clients', route: '/dashboard/clients', active: false },
-      { title: 'Stats', route: '/dashboard/stats', active: false },
-      { title: 'Simulateur', route: '/dashboard/simulateur', active: false }
-    ]
-  };
-  }, methods: {
-    refreshSettings(companySettings, setting) {
-      companySettings.map((setting) => setting.active = false);
+  computed: {
+    ...mapState(['settings'])
+  },
+
+  methods: {
+    ...mapActions(['logout']),
+    refreshSettings(settings, setting) {
+      settings.map((setting) => setting.active = false);
       setting.active = true;
       this.$router.replace(setting.route);
     }

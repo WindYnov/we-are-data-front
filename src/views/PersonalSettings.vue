@@ -75,7 +75,10 @@ export default {
   },
 
   methods: {
-    ...mapActions(['switchTheme', 'uploadAvatarImage', 'updateCompany'])
+    ...mapActions(['activateSetting', 'switchTheme', 'uploadAvatarImage', 'updateCompany'])
+  },
+  mounted() {
+    this.activateSetting('/dashboard/personalsettings');
   }
 };
 </script>

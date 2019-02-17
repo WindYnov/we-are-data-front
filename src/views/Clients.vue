@@ -15,7 +15,7 @@
 
 <script>
 // Import modules
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 // Import components
 import Table from '@/components/Table.vue';
 import CustomButton from '@/components/CustomButton.vue';
@@ -38,6 +38,14 @@ export default {
     showAddClientForm: false,
     client: {}
   };
+  },
+
+  methods: {
+    ...mapActions(['activateSetting'])
+  },
+
+  mounted() {
+    this.activateSetting('/dashboard/clients');
   }
 };
 </script>
