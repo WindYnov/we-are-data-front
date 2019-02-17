@@ -8,38 +8,38 @@
       <h3>Personal settings</h3>
 
       <div class="edit-user-infos" v-if="editMode">
-        <input type="text" v-model="user.nom" class="input" placeholder="nom" /> 
-        <input type="text" v-model="user.prenom" class="input" placeholder="prenom" />
-        <input type="text" v-model="user.societe" class="input" placeholder="societe" />
-        <input type="text" v-model="user.siret" class="input" placeholder="siret" />
-        <input type="text" v-model="user.email" class="input" placeholder="email" />
-        <input type="text" v-model="user.telephone" class="input" placeholder="telephone" />
+        <input type="text" v-model="company.nom" class="input" placeholder="nom" /> 
+        <input type="text" v-model="company.prenom" class="input" placeholder="prenom" />
+        <input type="text" v-model="company.societe" class="input" placeholder="societe" />
+        <input type="text" v-model="company.siret" class="input" placeholder="siret" />
+        <input type="text" v-model="company.email" class="input" placeholder="email" />
+        <input type="text" v-model="company.telephone" class="input" placeholder="telephone" />
       </div>
 
       <div class="user-infos" v-else>
         <div>
           <span>Nom</span>
-          <span>Test</span>
+          <span>{{company.nom}}</span>
         </div>
         <div>
           <span>Prénom</span>
-          <span>Test</span>
+          <span>{{company.prenom}}</span>
         </div>
         <div>
           <span>Société</span>
-          <span>Test</span>
+          <span>{{company.societe}}</span>
         </div>
         <div>
           <span>Siret</span>
-          <span>Test</span>
+          <span>{{company.siret}}</span>
         </div>
         <div>
           <span>Email</span>
-          <span>Test</span>
+          <span>{{company.email}}</span>
         </div>
         <div>
           <span>Téléphone</span>
-          <span>Test</span>
+          <span>{{company.telephone}}</span>
         </div>
       </div>
 
@@ -66,13 +66,12 @@ export default {
 
   data: () => {
     return {
-      user: {},
       editMode: false
     };
   },
 
   computed: {
-    ...mapState(['darkTheme'])
+    ...mapState(['company', 'darkTheme'])
   },
 
   methods: {

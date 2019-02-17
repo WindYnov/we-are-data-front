@@ -6,8 +6,43 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
 	state: {
-		company: {},
-		sales: [],
+		company: {
+			nom: 'Sakhiri',
+			prenom: 'Mostafa'
+		},
+		sales: [
+		{
+			numFacture:123,
+            dateFacture: 230,
+            productName: 400,
+            totalHT: 400,
+            tauxTVA: 20,
+            qteVendue: 400,
+            client: 400,
+            productsType: 400,
+            activityArea: 400
+        }, {
+			numFacture:123,
+            dateFacture: 230,
+            productName: 400,
+            totalHT:400,
+            tauxTVA: 20,
+            qteVendue: 400,
+            client: 400,
+            productsType: 400,
+            activityArea: 400
+		},
+		{
+			numFacture:123,
+            dateFacture: 230,
+            productName: 400,
+            totalHT: 400,
+            tauxTVA: 20,
+            qteVendue: 400,
+            client: 400,
+            productsType: 400,
+            activityArea: 400
+		}],
 		clients: [
 			{
 				_id: 1,
