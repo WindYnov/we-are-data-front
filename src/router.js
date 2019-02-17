@@ -63,7 +63,7 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.fullPath !== '/' && !localStorage.connected) {
+  if (to.fullPath !== '/' && !localStorage.weAreDataSession) {
     next('/');
     return;
   }

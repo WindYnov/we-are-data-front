@@ -6,6 +6,18 @@
 }
 
 .home {
+	nav {
+		text-align: right;
+		ul > li {
+			display: inline-block;
+			padding: 0 20px;
+			a {
+				color: white;
+				cursor: pointer;
+			}
+		}
+	}
+
 	.description {
 		background: $blue;
 		color: white;

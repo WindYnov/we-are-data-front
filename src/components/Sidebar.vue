@@ -11,7 +11,7 @@
       <a>{{setting.title}}</a>
     </div>
 
-    <div @click="logout()" class="setting">
+    <div @click="logout() && $router.replace('/')" class="setting">
       <a>Déconnexion</a>
     </div>
   </div>

@@ -1,6 +1,14 @@
 <template>
 <div class="home">
 	<header class="header">
+		<nav>
+			<ul>
+				<li v-if="!isConnected"><a>S'inscrire</a></li>
+				<li v-else @click="$router.replace('dashboard/stats');"><a>Tableau de bord</a></li>
+				<li v-if="!isConnected" @click="signIn().then(() => $router.replace('dashboard/stats'));"><a>Se connecter</a></li>
+				<li v-else @click="logout().then(() => $router.replace('/'));"><a>Se déconnecter</a></li>
+			</ul>
+		</nav>
 		<div class="hero-wrapper">
 		    <h3>Votre plateforme de reporting et dataviz</h3>
 		    <h1><img height="66px" src="./../assets/img/LOGO BIG.svg" /></h1>
@@ -154,7 +162,7 @@
 
 <script>
 // Import modules
-import { mapActions } from "vuex";
+import { mapState, mapActions } from "vuex";
 // Import components
 import CustomButton from '@/components/CustomButton.vue';
 import Card from '@/components/Card.vue';
@@ -167,6 +175,11 @@ export default {
 	Card,
 	Checkbox
   },
+
+  computed: {
+    ...mapState(['isConnected'])
+  },
+
   data: () => {
 	return {
 		company: {
@@ -181,7 +194,7 @@ export default {
 	};
   },
   methods: {
-	...mapActions(['saveCompany']),
+	...mapActions(['saveCompany', 'signIn', 'logout']),
 
 	toggleKeepInformed(checked) {
 		this.company.keepInformed = checked;

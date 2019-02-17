@@ -19,6 +19,8 @@ export default new Vuex.Store({
           { title: 'Simulateur', route: '/dashboard/simulateur', active: false }
         ],
 
+        isConnected: !!localStorage.weAreDataSession,
+
 		sales: [
 		{
 			numFacture:123,
@@ -100,6 +102,10 @@ export default new Vuex.Store({
 				state.settings.map((setting) => setting.active = false);
 				activeRoute.active = true;
 			}
+		},
+
+		refreshConnection(state, isConnected) {
+			state.isConnected = isConnected;
 		}
 	},
 	actions: {
@@ -121,15 +127,16 @@ export default new Vuex.Store({
 					});
 		},
 
-		signIn(mail, password) {
-			mail &&
-				password &&
-				axios.post("http://localhost:3000/company/auth/signin", {
+		signIn(state, mail, password) {
+			return axios
+				.post("http://localhost:3000/company/auth/signin", {
 					mail,
 					password
 				})
 				.then(() => {
-					localStorage.connected = true
+					let session = JSON.stringify({ expired: '2019-02-20T17:49:13+01:00'});
+					localStorage.setItem('weAreDataSession', session);
+					state.commit("refreshConnection", !!session);
 				});
 		},
 		signUp(mail, password) {
@@ -140,10 +147,12 @@ export default new Vuex.Store({
 					password
 				});
 		},
-		logout() {
-			axios.post("http://localhost:3000/company/logout")
+		logout(state) {
+			return axios
+				.post("http://localhost:3000/company/logout")
 				.then(() => {
-					localStorage.connected = false
+					localStorage.removeItem('weAreDataSession');
+					state.commit("refreshConnection", false);
 				});
 		},
 
