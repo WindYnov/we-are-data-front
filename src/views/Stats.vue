@@ -1,6 +1,8 @@
 <template>
   <div class="stats">
     <h4>Statistiques</h4>
+    <div>Quantité de produits vendues : {{qteProdVendue}} €</div>
+    <div>Chiffre d'affaires : {{chiffreAffaires}} €</div>
     <div id="container" style="width: 100%; height: 500px;"></div>
   </div>
 </template>
@@ -36,7 +38,14 @@ export default {
   },
 
   computed: {
-    ...mapState(['darkTheme'])
+    ...mapState(['sales', 'darkTheme']),
+    qteProdVendue() {
+      return this.sales.reduce((acc, sale) => acc += sale.qteVendue, 0);
+    },
+
+    chiffreAffaires() {
+      return this.sales.reduce((acc, sale) => acc += sale.totalHT - ((sale.totalHT * sale.tauxTVA) / 100), 0);
+    }
   },
 
   methods: {

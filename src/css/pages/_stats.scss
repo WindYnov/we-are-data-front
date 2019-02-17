@@ -1,5 +1,8 @@
 .stats {
-	margin: 100px 20px; 
+	margin: 100px 20px;
+	> div {
+		margin: 10px 0;
+	}
 }
 
 .dark-theme {
