@@ -117,34 +117,40 @@ export default new Vuex.Store({
 			axios.put("http://localhost:3000/company/info", company);
 		},
 
-		verify(mail) {
-			mail &&
+		verify(state, mail) {
+			return mail &&
 				axios
-					.get("http://localhost:3000/company/auth/check", { mail })
-					.then(response => {
-						this.verified = true;
-						this.alreadyRegistered = response.alreadyRegistered;
+					.post("http://localhost:3000/companies/verify", { email: mail })
+					.then((response) => {
+						return {
+							verified: response.data.verified,
+							alreadyRegistered: response.data.alreadyRegistered
+						};
 					});
 		},
 
 		signIn(state, mail, password) {
 			return axios
-				.post("http://localhost:3000/company/auth/signin", {
-					mail,
+				.post("http://localhost:3000/companies/finalised", {
+					email: mail,
 					password
 				})
-				.then(() => {
-					let session = JSON.stringify({ expired: '2019-02-20T17:49:13+01:00'});
+				.then((response) => {
+					let session = JSON.stringify({ token: response.data.token });
 					localStorage.setItem('weAreDataSession', session);
 					state.commit("refreshConnection", !!session);
 				});
 		},
-		signUp(mail, password) {
-			mail &&
-				password &&
-				axios.post("http://localhost:3000/company/signup", {
-					mail,
+		signUp(state, { mail, password }) {
+			return axios
+				.post("http://localhost:3000/companies/finalised", {
+					email: mail,
 					password
+				})
+				.then((response) => {
+					let session = JSON.stringify({ token: response.data.token });
+					localStorage.setItem('weAreDataSession', session);
+					state.commit("refreshConnection", !!session);
 				});
 		},
 		logout(state) {
@@ -153,6 +159,9 @@ export default new Vuex.Store({
 				.then(() => {
 					localStorage.removeItem('weAreDataSession');
 					state.commit("refreshConnection", false);
+				})
+				.then((response) => {
+					debugger;
 				});
 		},
 
