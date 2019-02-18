@@ -12,7 +12,7 @@
 			<CustomButton @click.native="signingUp(mail, password)" classNames="btn--lg btn--green tu" text="Sign Up" />
 		</div>
 		<div v-else>
-			<CustomButton @click.native="signIn(mail, password).then(() => $router.replace('dashboard/stats'))" classNames="btn--lg btn--green tu" text="Sign In" />
+			<CustomButton @click.native="signIn({ mail, password }).then(() => $router.replace('dashboard/stats'))" classNames="btn--lg btn--green tu" text="Sign In" />
 		</div>
 	</div>
 </template>
@@ -35,7 +35,9 @@ export default {
 		verified: false,
 		alreadyRegistered: false
 	};
-  }, methods: {
+  },
+
+  methods: {
 	...mapActions(['verify', 'signIn', 'signUp']),
 	mailVerification(mail, password) {
 		this.verify(mail, password)

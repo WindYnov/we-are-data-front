@@ -5,7 +5,7 @@
 			<ul>
 				<li v-if="!isConnected"><a>S'inscrire</a></li>
 				<li v-else @click="$router.replace('dashboard/stats');"><a>Tableau de bord</a></li>
-				<li v-if="!isConnected" @click="signIn().then(() => $router.replace('dashboard/stats'));"><a>Se connecter</a></li>
+				<li v-if="!isConnected" @click="$router.replace('login')"><a>Se connecter</a></li>
 				<li v-else @click="logout().then(() => $router.replace('/'));"><a>Se déconnecter</a></li>
 			</ul>
 		</nav>

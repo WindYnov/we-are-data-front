@@ -27,12 +27,7 @@ const router = new Router({
     {
       path: "/login",
       name: "login",
-      component: Login,
-      beforeEnter: (to, from, next) => {
-        if (localStorage.weAreDataSession) {
-          next('/dashboard/stats');
-        }
-      }
+      component: Login
     },
     {
       path: "/dashboard",
@@ -68,7 +63,12 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.fullPath !== '/' && !localStorage.weAreDataSession) {
+  if (to.fullPath === '/login' && localStorage.weAreDataSession) {
+    next('/dashboard/stats');
+    return;
+  }
+
+  if (!['/', '/login'].includes(to.fullPath) && !localStorage.weAreDataSession) {
     next('/');
     return;
   }

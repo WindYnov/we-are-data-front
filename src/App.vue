@@ -1,7 +1,7 @@
 <template>
   <div id="app" :class="`${darkTheme && this.$router.history.current.path !== '/' ? 'dark-theme' : ''}`">
-    <Sidebar v-if="this.$router.history.current.path !== '/'" />
-    <div :style="`${this.$router.history.current.path === '/' ? '' : 'left: 10%; width: 90%;'}
+    <Sidebar v-if="this.$router.history.current.path !== '/' && isConnected" />
+    <div :style="`${this.$router.history.current.path === '/' || !isConnected ? 'width: 100%;' : 'left: 10%; width: 90%;'}
       ${this.darkTheme && this.$router.history.current.path !== '/' ? 'background-color: #2c3e52;' : ''}`">
       <router-view/>
     </div>
@@ -20,7 +20,7 @@ export default {
     Sidebar
   },
   computed: {
-    ...mapState(['darkTheme'])
+    ...mapState(['isConnected', 'darkTheme'])
   }
 };
 </script>

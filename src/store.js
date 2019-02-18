@@ -129,7 +129,7 @@ export default new Vuex.Store({
 					});
 		},
 
-		signIn(state, mail, password) {
+		signIn(state, { mail, password }) {
 			return axios
 				.post("http://localhost:3000/companies/finalised", {
 					email: mail,
@@ -154,15 +154,8 @@ export default new Vuex.Store({
 				});
 		},
 		logout(state) {
-			return axios
-				.post("http://localhost:3000/company/logout")
-				.then(() => {
-					localStorage.removeItem('weAreDataSession');
-					state.commit("refreshConnection", false);
-				})
-				.then((response) => {
-					debugger;
-				});
+			localStorage.removeItem('weAreDataSession');
+			state.commit("refreshConnection", false);
 		},
 
 		saveSalesInfos(state, salesInfos) {
