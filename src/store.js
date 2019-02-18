@@ -110,7 +110,7 @@ export default new Vuex.Store({
 	},
 	actions: {
 		saveCompany(state, company) {
-			axios.post("http://localhost:3000/company/info", company);
+			return axios.post("http://localhost:3000/companies/register", company);
 		},
 
 		updateCompany(state, company) {

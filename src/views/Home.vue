@@ -109,12 +109,12 @@
 			            <div class="body-field">
 			                <label>nom</label>
 			                <br/>
-			                <input type="text" v-model="company.nom" class="input" /> 
+			                <input type="text" v-model="company.firstname" class="input" /> 
 			            </div>
 			            <div class="body-field">
 			                <label for="lastname">prenom</label>
 			                <br/>
-			                <input type="text" v-model="company.prenom" class="input" /> 
+			                <input type="text" v-model="company.name" class="input" /> 
 			            </div>
 			            <div class="body-field">
 			                <label for="age">sociéte</label>
@@ -134,7 +134,7 @@
 			            <div class="body-field">
 			                <label for="tele">telephone</label>
 			                <br/>
-			                <input type="text" v-model="company.telephone" class="input" /> 
+			                <input type="text" v-model="company.phone" class="input" /> 
 			            </div>
 			            <div>
 			          		<Checkbox v-on:onToggle="toggleKeepInformed" classNames="checkbox--red" :checked="false"/>
@@ -144,7 +144,7 @@
         	</template>
 
         	<template slot="footer">
-        		<CustomButton @click.native="saveCompany(company)" classNames="btn--lg btn--green tu" text="je m'inscris" />
+        		<CustomButton @click.native="saveCompany(company).then(() => resetForm());" classNames="btn--lg btn--green tu" text="je m'inscris" />
 	        </template>
 		</Card>
 	</section>
@@ -183,18 +183,30 @@ export default {
   data: () => {
 	return {
 		company: {
-			nom: null,
+			name: null,
 			prenom: null,
 			email: null,
 			societe: null,
 			siret: null,
-			telephone: null,
+			phone: null,
 			keepInformed: false
 		}
 	};
   },
   methods: {
 	...mapActions(['saveCompany', 'signIn', 'logout']),
+
+	resetForm() {
+		this.company = {
+			name: null,
+			prenom: null,
+			email: null,
+			societe: null,
+			siret: null,
+			phone: null,
+			keepInformed: false
+		};
+	},
 
 	toggleKeepInformed(checked) {
 		this.company.keepInformed = checked;
